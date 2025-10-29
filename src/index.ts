@@ -1,7 +1,11 @@
 import { Elysia } from "elysia";
+import registerGithubRoutes from "./routes/github";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const app = new Elysia();
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+registerGithubRoutes(app);
+
+const PORT = Number(process.env.PORT) || 3000;
+app.listen(PORT);
+
+console.log(`Server running at http://localhost:${PORT}`);
