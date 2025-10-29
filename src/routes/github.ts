@@ -2,7 +2,7 @@ import { Elysia } from "elysia";
 import { fetchProfile, clearCache } from "../services/githubService";
 import logger from "../utils/logger";
 
-const githubRoutes = new Elysia()
+export const githubRoutes = new Elysia()
 	.get("/api/github/:username", async ({ params }) => {
 		const username = params.username as string;
 		logger.info("Request - fetch profile", { username });
@@ -27,4 +27,5 @@ const githubRoutes = new Elysia()
 	});
 
 export default githubRoutes;
+
 
